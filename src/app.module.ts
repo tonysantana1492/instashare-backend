@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -18,6 +20,22 @@ import * as Joi from 'joi';
         JWT_SECRET: Joi.string().required(),
         EXPIRES_IN: Joi.string().required()
       }),
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      ...(process.env.DATABASE_URL
+        ? { url: process.env.DATABASE_URL }
+        : {
+            host: process.env.DB_HOST,
+            port: parseInt(process.env.DB_PORT),
+            username: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+          }),
+      synchronize: process.env.NODE_ENV !== 'prod',
+      logging:
+        process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
+        entities: [join(__dirname,'**', '*.entity.{ts,js}')],
     }),
   ],
   controllers: [],
