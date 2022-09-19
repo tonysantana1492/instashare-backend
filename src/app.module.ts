@@ -21,7 +21,7 @@ import { FilemanagerModule } from './filemanager/filemanager.module';
         DB_PASSWORD: Joi.string().required(),
         DB_NAME: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
-        EXPIRES_IN: Joi.string().required()
+        EXPIRES_IN: Joi.number().required()
       }),
     }),
     TypeOrmModule.forRoot({
