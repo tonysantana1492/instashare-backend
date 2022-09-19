@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { join } from 'path';
         process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
         entities: [join(__dirname,'**', '*.entity.{ts,js}')],
     }),
+    EventEmitterModule.forRoot(),
   ],
   controllers: [],
   providers: [],
