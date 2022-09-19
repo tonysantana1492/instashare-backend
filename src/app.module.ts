@@ -4,6 +4,7 @@ import * as Joi from 'joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
         entities: [join(__dirname,'**', '*.entity.{ts,js}')],
     }),
     EventEmitterModule.forRoot(),
+    AuthModule,
   ],
   controllers: [],
   providers: [],
