@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { AuthModule } from './auth/auth.module';
+import { FilemanagerModule } from './filemanager/filemanager.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     EventEmitterModule.forRoot(),
     AuthModule,
+    FilemanagerModule,
   ],
   controllers: [],
   providers: [],
