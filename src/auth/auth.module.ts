@@ -23,12 +23,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         },
       }),
     }),
-    /*JwtModule.register({
-      secret: process.env.JWT_SECRET,  
-      signOptions: {
-        expiresIn: 3600
-      },
-    }),*/
     TypeOrmModule.forFeature([UserRepository]),
   ],
   controllers: [AuthController],

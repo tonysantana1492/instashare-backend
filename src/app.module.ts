@@ -36,8 +36,7 @@ import { FilemanagerModule } from './filemanager/filemanager.module';
             database: process.env.DB_NAME,
           }),
       synchronize: process.env.NODE_ENV !== 'prod',
-      logging:
-        process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
+      // logging: process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
         entities: [join(__dirname,'**', '*.entity.{ts,js}')],
     }),
     EventEmitterModule.forRoot(),
