@@ -1,12 +1,10 @@
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { AuthService } from './auth.service';
-import { AuthCredentialsDto } from './dto/auth-credentials.dto';
-import { RegisterCredentialsDto } from './dto/register-credentials.dto';
-import { JwtStrategy } from './jwt.strategy';
-import { User } from './user.entity';
-import { UserRepository } from './user.repository';
+import { AuthService } from '../auth.service';
+import { AuthCredentialsDto } from '../dto/auth-credentials.dto';
+import { RegisterCredentialsDto } from '../dto/register-credentials.dto';
+import { JwtStrategy } from '../jwt.strategy';
+import { UserRepository } from '../user.repository';
 import { UserRepositoryMock } from './user.repository.mock';
 
 describe('AuthService', () => {
@@ -14,18 +12,6 @@ describe('AuthService', () => {
   let jwtService;
   let jwtStrategy;
   let userRepository;
-
-  /*const mockUserRepository = () => ({
-    register: jest.fn().mockImplementation((dto) => {
-      return Promise.resolve({
-        id: Math.random() * (1000 - 1) + 1,
-        ...dto,
-      });
-    }),
-    validateUserPassword: jest.fn(),
-    find: jest.fn(),
-    findOne: jest.fn(),
-  });*/
 
   const mockJwtService = () => ({
     sign: jest.fn().mockImplementation(() => {

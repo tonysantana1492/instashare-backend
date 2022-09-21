@@ -1,5 +1,5 @@
-import { AuthCredentialsDto } from './dto/auth-credentials.dto';
-import { RegisterCredentialsDto } from './dto/register-credentials.dto';
+import { AuthCredentialsDto } from "../dto/auth-credentials.dto";
+import { RegisterCredentialsDto } from "../dto/register-credentials.dto";
 
 export class AuthServiceMock {
   async register(
