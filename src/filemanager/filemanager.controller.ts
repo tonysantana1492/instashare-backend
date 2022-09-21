@@ -17,10 +17,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/user.entity';
 import { multerOptions } from 'src/config/multer.config';
-import { CreateFileDto } from './dto/create-file.dto';
 import { FilemanagerService } from './filemanager.service';
-import path, { join } from 'path';
-import { createReadStream, readFileSync } from 'fs';
 import { Response } from 'express';
 
 @Controller('filemanager')
@@ -42,8 +39,6 @@ export class FilemanagerController {
     @Res() response: Response,
   ) {
 
-    response.contentType('image/png');
-    response.attachment();
     const fileToDownload = await this.filemanagerService.downloadFile(id);        
 
     return response.send(fileToDownload);
@@ -59,7 +54,7 @@ export class FilemanagerController {
 
   @Post('/upload')
   @UseInterceptors(FileInterceptor('file', multerOptions))
-  async uploadfile(
+  async uploadFile(
     @UploadedFile() file: Express.Multer.File,
     @GetUser() user: User,
   ) {
