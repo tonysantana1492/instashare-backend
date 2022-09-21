@@ -30,12 +30,10 @@ export class AuthService {
       const payload: JwtPayload = { id, displayname, username };
 
       const token = await this.jwtService.sign(payload);
-      
+
       const response: AuthResponseInterface = { token, user: newUser };
       return response;
-
     } catch (e) {
-
       const response = [
         {
           type: 'username',
@@ -43,14 +41,11 @@ export class AuthService {
         },
       ];
 
-      return {error: response};
+      return { error: response };
     }
   }
 
-  async signIn(
-    authCredentialsDto: AuthCredentialsDto,
-  ): Promise<any> {
-
+  async signIn(authCredentialsDto: AuthCredentialsDto): Promise<any> {
     const user = await this.userRepository.validateUserPassword(
       authCredentialsDto,
     );
@@ -64,7 +59,7 @@ export class AuthService {
         },
       ];
 
-      return {error: response};
+      return { error: response };
     }
 
     const { id, username, displayname } = user;
