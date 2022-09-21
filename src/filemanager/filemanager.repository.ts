@@ -34,4 +34,5 @@ export class FilemanagerRepository extends Repository<File> {
     file.url = urlZip;
     await file.save();
   }
+  
 }
