@@ -12,8 +12,7 @@ import { JwtService } from '@nestjs/jwt';
 
 const userLogin = {
   username: 'some.username@gmail.com',
-  password: 'SomePassword1234',
-  // displayname: 'some displayname',
+  password: 'SomePassword1234'
 };
 
 const userRegister = {

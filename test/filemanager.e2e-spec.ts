@@ -4,7 +4,6 @@ import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { FilemanagerModule } from 'src/filemanager/filemanager.module';
 import { FilemanagerRepository } from 'src/filemanager/filemanager.repository';
-import { FilemanagerRepositoryMock } from 'src/filemanager/test/filemanager.repository.mock';
 import { AuthGuard } from '@nestjs/passport';
 import { File } from 'src/filemanager/filemanager.entity';
 import { User } from 'src/auth/user.entity';
