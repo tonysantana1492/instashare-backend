@@ -35,6 +35,9 @@ import { FilemanagerModule } from './filemanager/filemanager.module';
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
           }),
+          ssl: {
+            rejectUnauthorized: false
+          },
       synchronize: true,
       // logging: process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
