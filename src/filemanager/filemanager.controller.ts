@@ -39,8 +39,10 @@ export class FilemanagerController {
     @Res() response: Response,
   ) {
 
-    const fileToDownload = await this.filemanagerService.downloadFile(id);        
-
+    const fileToDownload = await this.filemanagerService.downloadFile(id);   
+    
+    response.contentType('application/x-zip-compressed');
+    response.attachment();
     return response.send(fileToDownload);
   }
 
