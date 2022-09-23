@@ -27,7 +27,12 @@ import { FilemanagerModule } from './filemanager/filemanager.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       ...(process.env.DATABASE_URL
-        ? { url: process.env.DATABASE_URL }
+        ? {
+            url: process.env.DATABASE_URL,
+            ssl: {
+              rejectUnauthorized: false,
+            },
+          }
         : {
             host: process.env.DB_HOST,
             port: +process.env.DB_PORT,
@@ -35,9 +40,7 @@ import { FilemanagerModule } from './filemanager/filemanager.module';
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
           }),
-          ssl: {
-            rejectUnauthorized: false
-          },
+
       synchronize: true,
       // logging: process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
