@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);  
   if (process.env.NODE_ENV === 'production') {
     app.enableCors({
-      origin: 'https://nest-instashare-backend.herokuapp.com',
+      origin: 'https://instashare-frontend-kypu.vercel.app',
       credentials: true,
     });
   } else{
