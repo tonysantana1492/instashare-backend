@@ -4,13 +4,13 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const logger = new Logger('bootstrap');
-  const app = await NestFactory.create(AppModule);  
+  const app = await NestFactory.create(AppModule, { cors: true });
   if (process.env.NODE_ENV === 'production') {
     app.enableCors({
       origin: 'https://instashare-frontend-kypu.vercel.app',
       credentials: true,
     });
-  } else{
+  } else {
     app.enableCors();
   }
   const port = process.env.PORT || 4000;
